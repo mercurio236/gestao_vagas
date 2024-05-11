@@ -20,6 +20,8 @@ public class ProfileCandidateUseCase {
             throw new UsernameNotFoundException("User not found.");
         });
 
+        System.out.println(candidate);
+
         
         var candidateDTO = ProfileCandidateResponseDTO.builder()
         .id(candidate.getId())

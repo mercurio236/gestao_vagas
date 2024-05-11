@@ -40,10 +40,11 @@ public class CandidateController {
         }
     }
 
-    @GetMapping("/profile_candidate")
+    @GetMapping("/")
     public ResponseEntity<Object> get(HttpServletRequest request) {
 
         var idCandidate = request.getAttribute("candidate_id");
+        
 
         try {
             var result = this.profileCandidateUseCase.execute(UUID.fromString(idCandidate.toString()));

@@ -22,7 +22,7 @@ import br.com.arleysouto.gestao_vagas.modules.candidate.dto.AuthCandidateRespons
 @Service
 public class AuthCandidateUseCase {
 
-    @Value("${security.token.secrety.candidate}")
+    @Value("${security.token.secret.candidate}")
     private String secretKey;
 
     @Autowired

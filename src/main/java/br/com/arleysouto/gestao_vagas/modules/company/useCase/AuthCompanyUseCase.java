@@ -21,7 +21,7 @@ import br.com.arleysouto.gestao_vagas.modules.company.repositories.CompanyReposi
 @Service
 public class AuthCompanyUseCase {
 
-    @Value("${security.token.secrety}")
+    @Value("${security.token.secret}")
     private String secretKey;
 
     @Autowired
