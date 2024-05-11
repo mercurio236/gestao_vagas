@@ -2,6 +2,7 @@ package br.com.arleysouto.gestao_vagas.modules.company.useCase;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 
 import javax.naming.AuthenticationException;
 
@@ -44,13 +45,16 @@ public class AuthCompanyUseCase {
         }
 
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
+        var expireIn = Instant.now().plus(Duration.ofHours(2));
         var token = JWT.create().withIssuer("javagas")
-                .withExpiresAt(Instant.now().plus(Duration.ofHours(2)))
+                .withExpiresAt(expireIn)
                 .withSubject(company.getId().toString())
+                .withClaim("roles", Arrays.asList("COMPANY"))
                 .sign(algorithm);
 
         var authCompanyResponse = AuthCompanyResponseDTO.builder()
                 .token_company(token)
+                .expire_in(expireIn.toEpochMilli())
                 .build();
 
         return authCompanyResponse;
