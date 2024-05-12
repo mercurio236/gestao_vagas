@@ -35,7 +35,6 @@ public class SecurityFilter extends OncePerRequestFilter {
                     return;
                 }
 
-                
                 var roles = token.getClaim("roles").asList(Object.class);
 
                 var grants = roles.stream()
@@ -43,7 +42,8 @@ public class SecurityFilter extends OncePerRequestFilter {
                         .toList();
 
                 request.setAttribute("company_id", token.getSubject());
-                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(token.getSubject(), null,
+                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(token.getSubject(),
+                        null,
                         grants);
                 SecurityContextHolder.getContext().setAuthentication(auth);
             }
