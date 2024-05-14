@@ -1,6 +1,5 @@
 package br.com.arleysouto.gestao_vagas.modules.candidate.dto;
 
-import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
