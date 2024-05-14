@@ -45,7 +45,7 @@ public class AuthCandidateUseCase {
         }
 
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
-        var expireIn = Instant.now().plus(Duration.ofMinutes(10));
+        var expireIn = Instant.now().plus(Duration.ofHours(2));
         var token = JWT.create()
                 .withIssuer("javagas")
                 .withSubject(candidate.getId().toString())
